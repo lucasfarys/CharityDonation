@@ -20,4 +20,5 @@ public class IstitutionService {
     public List<Institution> getAllInstitutions(){
         return institutionRepository.findAll();
     }
+
 }

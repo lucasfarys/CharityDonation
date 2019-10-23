@@ -28,5 +28,6 @@ public class HomeController {
         model.addAttribute("quantityOfBags", donationService.getQuantityOfBags());
         model.addAttribute("quantityOfInstitutions", donationService.getQuantityOfInstitutions());
         return "index";
+
     }
 }

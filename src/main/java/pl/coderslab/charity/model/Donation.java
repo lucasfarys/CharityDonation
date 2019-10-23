@@ -16,12 +16,13 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @NotBlank
+    @Column(nullable = false)
     Long quantity;
-    @NotBlank
+    @Column(nullable = false)
     String street;
-    @NotBlank
+    @Column(nullable = false)
     String city;
+
     String zip_code;
     LocalDate pick_up_date;
     LocalDateTime pick_up_time;
@@ -32,4 +33,5 @@ public class Donation {
     List<Category> categories;
     @ManyToOne
     Institution institution;
+
 }

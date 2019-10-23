@@ -20,4 +20,5 @@ public class DonationService {
     public Long getQuantityOfInstitutions(){
         return donationRepository.getNumberOfInstitutions();
     }
+
 }

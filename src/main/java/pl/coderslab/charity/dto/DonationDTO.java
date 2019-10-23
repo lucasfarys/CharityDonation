@@ -22,4 +22,5 @@ public class DonationDTO {
     String pick_up_comment;
     List<Category> categories;
     Institution institution;
+
 }

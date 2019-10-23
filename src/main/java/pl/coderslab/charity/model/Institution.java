@@ -22,4 +22,5 @@ public class Institution {
 
     @OneToMany(mappedBy = "institution")
     List<Donation> donations;
+
 }
