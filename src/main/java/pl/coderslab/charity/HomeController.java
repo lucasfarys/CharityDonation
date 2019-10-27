@@ -7,6 +7,7 @@ import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.IstitutionService;
 
+import java.time.LocalTime;
 import java.util.List;
 
 
@@ -23,6 +24,7 @@ public class HomeController {
 
     @RequestMapping("/")
     public String homeAction(Model model){
+        System.out.println(LocalTime.now());
         List<Institution> institutions = institutionService.getAllInstitutions();
         model.addAttribute("institutions",institutions);
         model.addAttribute("quantityOfBags", donationService.getQuantityOfBags());

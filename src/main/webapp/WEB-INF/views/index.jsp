@@ -84,20 +84,13 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <c:forEach var="i" begin="0" end="${institutions.size()-1}" step="2">
-                <li>
-                    <div class="col">
-                        <div class="title">Fundacja ${institutions.get(i).name}</div>
-                        <div class="subtitle">Cel i misja: ${institutions.get(i).description}</div>
+            <c:forEach var="institution" items="${institutions}" varStatus="loop">
+                <c:if test="${loop.count % 2 != 0}"><li></c:if>
+                        <div class="col">
+                        <div class="title">Fundacja ${institution.name}</div>
+                        <div class="subtitle">Cel i misja: ${institution.description}</div>
                     </div>
-                    <div class="col">
-                        <c:if test="${institutions.size()-1>i}">
-                            <div class="title">Fundacja ${institutions.get(i+1).name}</div>
-                            <div class="subtitle">Cel i misja: ${institutions.get(i+1).description}</div>
-                        </c:if>
-                    </div>
-
-                </li>
+                <c:if test="${loop.count % 2 == 0}"></li></c:if>
             </c:forEach>
         </ul>
     </div>

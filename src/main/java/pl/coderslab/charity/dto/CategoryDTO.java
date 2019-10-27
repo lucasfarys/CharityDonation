@@ -2,10 +2,18 @@ package pl.coderslab.charity.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.coderslab.charity.model.Donation;
+
+import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Getter
 @Setter
 public class CategoryDTO {
-    Long id;
-    String name;
+    private Long id;
+    @NotBlank
+    private String name;
+
+    private List<Donation> donation;
+
 }
