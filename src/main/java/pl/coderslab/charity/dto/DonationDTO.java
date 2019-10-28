@@ -2,7 +2,7 @@ package pl.coderslab.charity.dto;
 
 import lombok.Getter;
 import lombok.Setter;
-import pl.coderslab.charity.model.Category;
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.validation.ZipCode;
 
@@ -22,16 +22,18 @@ public class DonationDTO {
     @NotBlank
     private String city;
     @ZipCode
-    private String zip_code;
+    private String zipCode;
     @NotBlank
-    private LocalDate pick_up_date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate pickUpDate;
     @NotBlank
-    private LocalTime pick_up_time;
+    private LocalTime pickUpTime;
     @NotBlank
-    private String pick_up_comment;
+    private String pickUpComment;
+    @NotBlank
+    private String phoneNumber;
 
-
-    private List<Category> categories;
+    private List<CategoryDTO> categories;
     private Institution institution;
 
 }
