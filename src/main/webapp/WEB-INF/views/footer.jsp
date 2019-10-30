@@ -17,6 +17,7 @@
             <button class="btn" type="submit">Wyślij</button>
         </form>
     </div>
+
     <div class="bottom-line">
         <span class="bottom-line--copy">Copyright &copy; 2018</span>
         <div class="bottom-line--icons">

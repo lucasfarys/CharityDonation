@@ -17,6 +17,7 @@ public class IstitutionService {
         this.institutionRepository = institutionRepository;
     }
 
+
     public List<Institution> getAllInstitutions(){
         return institutionRepository.findAll();
     }

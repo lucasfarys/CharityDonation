@@ -78,6 +78,7 @@
 <section class="help">
     <h2>Komu pomagamy?</h2>
 
+
     <!-- SLIDE 1 -->
     <div class="help--slides active" data-id="1">
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.

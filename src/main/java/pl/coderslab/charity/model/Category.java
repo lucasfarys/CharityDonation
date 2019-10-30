@@ -15,6 +15,7 @@ public class Category {
     @Column(unique = true, nullable = false)
     String name;
 
+
     @ManyToOne
     Donation donation;
 }

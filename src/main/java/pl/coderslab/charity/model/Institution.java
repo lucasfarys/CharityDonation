@@ -24,6 +24,7 @@ public class Institution {
     @OneToMany(mappedBy = "institution")
     private List<Donation> donations;
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

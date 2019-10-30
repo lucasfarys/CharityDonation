@@ -18,6 +18,7 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
+
     public List<CategoryDTO> getAllCategories(){
         List<CategoryDTO> result= new ArrayList<>();
         List<Category> preresult = categoryRepository.findAll();

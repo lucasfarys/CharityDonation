@@ -9,4 +9,5 @@ public interface DonationRepository extends JpaRepository<Donation,Long> {
     Long getQuantityBags();
     @Query(value = "SELECT COUNT( institution_id) FROM donations",nativeQuery = true)
     Long getNumberOfInstitutions();
+
 }

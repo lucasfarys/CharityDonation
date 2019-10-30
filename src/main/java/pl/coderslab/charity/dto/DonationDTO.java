@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 public class DonationDTO {
+
     private Long id;
     @NotBlank
     private Long quantity;

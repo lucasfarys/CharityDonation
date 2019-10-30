@@ -23,6 +23,7 @@ public class Donation {
     @Column(nullable = false)
     String city;
 
+
     String zip_code;
     LocalDate pick_up_date;
     LocalDateTime pick_up_time;

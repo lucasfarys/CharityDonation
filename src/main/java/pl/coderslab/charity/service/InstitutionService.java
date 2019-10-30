@@ -19,6 +19,7 @@ public class InstitutionService {
         this.institutionRepository = institutionRepository;
     }
 
+
     public List<InstitutionDTO> getAllInstitutions(){
         List<InstitutionDTO> result = new ArrayList<>();
         List<Institution> preresult = institutionRepository.findAll();
