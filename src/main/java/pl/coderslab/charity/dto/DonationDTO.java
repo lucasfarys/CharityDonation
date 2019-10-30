@@ -3,7 +3,6 @@ package pl.coderslab.charity.dto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.validation.ZipCode;
 
 import javax.validation.constraints.NotBlank;
@@ -33,7 +32,7 @@ public class DonationDTO {
     @NotBlank
     private String phoneNumber;
 
-    private List<CategoryDTO> categories;
-    private Institution institution;
+    private List<Long> categories;
+    private Long institution;
 
 }

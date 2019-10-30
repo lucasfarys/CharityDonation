@@ -45,35 +45,15 @@
                 <div data-step="1" class="active">
                     <h3>Zaznacz co chcesz oddać:</h3>
 
-                   <%--<form:checkboxes path="categories" items="${categories}"/>--%>
-                        <%--<div class="form-group form-group--checkbox">--%>
-                            <%--<label>--%>
-                                <%--<input--%>
-                                        <%--type="checkbox"--%>
-                                        <%--name="category.torf"--%>
-                                        <%--value=true--%>
-                                <%--/>--%>
-                                <%--<span class="checkbox"></span>--%>
-                                <%--<span class="description"--%>
-                                <%-->${category.name}</span--%>
-                                <%-->--%>
-                            <%--</label>--%>
-                        <%--</div>--%>
-                        <%----%>
-
-
-
                     <c:forEach var="category" items="${categories}">
                         <div class="form-group form-group--checkbox">
                             <label>
-                                <form:checkbox path="categories" value="category" />
+                                <form:checkbox path="categories" value="${category.id}" />
                                 <span class="checkbox"></span>
                                 <span class="description">${category.name}</span>
                             </label>
                         </div>
                     </c:forEach>
-
-
 
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn next-step">Dalej</button>
@@ -103,20 +83,20 @@
                 <div data-step="3">
                     <h3>Wybierz organizacje, której chcesz pomóc:</h3>
 
-                    <%--<c:forEach var="institution" items="${snippetDTO.institutions}">--%>
+                    <c:forEach var="institution" items="${institutions}">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="institution.torf" value=true />
+                            <form:radiobutton path="institution" name="institution" value="${institution.id}" />
                             <span class="checkbox radio"></span>
                             <span class="description">
-                  <%--<div class="title">${institution.name}</div>--%>
+                  <div class="title">${institution.name}</div>
                   <div class="subtitle">
-                    <%--Cel i misja: ${institution.description}--%>
+                    Cel i misja: ${institution.description}
                   </div>
                 </span>
                         </label>
                     </div>
-                    <%--</c:forEach>--%>
+                    </c:forEach>
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn prev-step">Wstecz</button>
                         <button type="button" class="btn next-step">Dalej</button>
@@ -131,22 +111,22 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru</h4>
                             <div class="form-group form-group--inline">
-                                <label> Ulica <input type="text" name="street" /> </label>
+                                <label> Ulica <form:input path="street" type="text" /> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
-                                <label> Miasto <input type="text" name="city" /> </label>
+                                <label> Miasto <form:input path="city" type="text"/> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Kod pocztowy <input type="text" name="zipCode" />
+                                    Kod pocztowy <form:input path="zipCode" type="text"/>
                                 </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Numer telefonu <input type="phone" name="phoneNumber" />
+                                    Numer telefonu <form:input path="phoneNumber" type="phone"/>
                                 </label>
                             </div>
                         </div>
@@ -154,17 +134,17 @@
                         <div class="form-section--column">
                             <h4>Termin odbioru</h4>
                             <div class="form-group form-group--inline">
-                                <label> Data <input type="date" name="pickUpDate" /> </label>
+                                <label> Data <form:input path="pickUpDate" type="date"/> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
-                                <label> Godzina <input type="time" name="pickUpTime" /> </label>
+                                <label> Godzina <form:input path="pickUpTime" type="time" /> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
                                     Uwagi dla kuriera
-                                    <textarea name="pickUpComment" rows="5"></textarea>
+                                    <form:textarea path="pickUpComment"  rows="5"/>
                                 </label>
                             </div>
                         </div>

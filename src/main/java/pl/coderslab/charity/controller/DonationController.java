@@ -1,27 +1,26 @@
 package pl.coderslab.charity.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.coderslab.charity.dto.CategoryDTO;
 import pl.coderslab.charity.dto.DonationDTO;
-import pl.coderslab.charity.dto.SnippetDTO;
 import pl.coderslab.charity.service.CategoryService;
+import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class DonationController {
     private CategoryService categoryService;
     private InstitutionService institutionService;
+    private DonationService donationService;
 
-    public DonationController(CategoryService categoryService, InstitutionService institutionService) {
+    public DonationController(CategoryService categoryService, InstitutionService institutionService,
+                              DonationService donationService) {
         this.categoryService = categoryService;
         this.institutionService = institutionService;
+        this.donationService = donationService;
     }
 
     @GetMapping("/snippet")
@@ -33,7 +32,7 @@ public class DonationController {
     }
     @PostMapping("/snippet")
     public String snippet(@ModelAttribute(name = "donation") DonationDTO donationDTO, BindingResult result){
-        System.out.println(donationDTO.getCategories());
+        donationService.saveDonation(donationDTO);
         return "redirect:/snippet";
     }
 }

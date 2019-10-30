@@ -30,4 +30,7 @@ public class CategoryService {
 
         return result;
     }
+    public List<Category> getCategoryById(List<Long> id){
+        return categoryRepository.findByIdIn(id);
+    }
 }

@@ -31,4 +31,8 @@ public class InstitutionService {
         });
         return result;
     }
+    public Institution getInstitutionById(Long id){
+        return institutionRepository.findIstitutionById(id);
+
+    }
 }
