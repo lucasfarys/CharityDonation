@@ -31,6 +31,8 @@ public class Donation {
     private LocalTime pickUpTime;
     @Column(nullable = false, name = "pick_up_comment")
     private String pickUpComment;
+    @Column(nullable = false, name = "phone_number")
+    private String phoneNumber;
 
 
     @ManyToMany

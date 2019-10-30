@@ -164,6 +164,11 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+      if(this.currentStep == 5) {
+        var quantityBags = document.getElementsByClassName("summary--text");
+        quantityBags.innerHTML = "test";
+        console.log(quantityBags);
+      }
     }
 
   }

@@ -13,6 +13,7 @@ public class CategoryDTO {
     private Long id;
     @NotBlank
     private String name;
+    private boolean torf=false;
 
     private List<Donation> donation;
 

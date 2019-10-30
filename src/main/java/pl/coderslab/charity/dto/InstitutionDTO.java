@@ -8,10 +8,11 @@ import java.util.List;
 
 @Getter
 @Setter
-public class IstitutionDTO {
+public class InstitutionDTO {
     private Long id;
     private String name;
     private String description;
+    private boolean torf;
 
     private List<Donation> donations;
 }
