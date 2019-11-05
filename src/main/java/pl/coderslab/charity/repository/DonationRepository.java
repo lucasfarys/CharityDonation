@@ -7,7 +7,7 @@ import pl.coderslab.charity.model.Donation;
 public interface DonationRepository extends JpaRepository<Donation,Long> {
     @Query(value = "SELECT SUM(quantity) AS quantityBags FROM donations",nativeQuery = true)
     Long getQuantityBags();
-    @Query(value = "SELECT COUNT( institution_id) FROM donations",nativeQuery = true)
+    @Query(value = "SELECT COUNT(DISTINCT institution_id) FROM donations",nativeQuery = true)
     Long getNumberOfInstitutions();
 
 }

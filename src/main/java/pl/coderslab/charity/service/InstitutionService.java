@@ -1,6 +1,7 @@
 package pl.coderslab.charity.service;
 
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.dto.InstitutionDTO;
@@ -34,6 +35,19 @@ public class InstitutionService {
     }
     public Institution getInstitutionById(Long id){
         return institutionRepository.findIstitutionById(id);
-
+    }
+    public void deleteInstitution(Long id){
+        institutionRepository.deleteById(id);
+    }
+    public void updateInstitution(InstitutionDTO institutionDTO){
+        ModelMapper modelMapper = new ModelMapper();
+        Institution institution = institutionRepository.getOne(institutionDTO.getId());
+        institution = modelMapper.map(institutionDTO,Institution.class);
+        institutionRepository.save(institution);
+    }
+    public void saveInstitution(InstitutionDTO institutionDTO){
+        ModelMapper modelMapper = new ModelMapper();
+        Institution institution = modelMapper.map(institutionDTO,Institution.class);
+        institutionRepository.save(institution);
     }
 }

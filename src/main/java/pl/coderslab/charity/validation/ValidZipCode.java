@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = ZipCodeValidator.class)
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ZipCode {
+public @interface ValidZipCode {
     String message() default "Nieprawidłowy kod pocztowy";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};

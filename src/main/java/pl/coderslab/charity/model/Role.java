@@ -4,19 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "categories")
-public class Category {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Column(unique = true, nullable = false)
-    String name;
+    private Long id;
+    private String name;
 
-
-    @ManyToOne
-    Donation donation;
+    @ManyToMany
+    private List<User> users;
 }

@@ -10,6 +10,8 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
     <title>Document</title>
 
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
@@ -67,7 +69,7 @@
                     <div class="form-group form-group--inline">
                         <label>
                             Liczba 60l worków:
-                            <form:input path="quantity" type="number" />
+                            <form:input path="quantity" type="number" id="quantity" />
                         </label>
                     </div>
 
@@ -86,7 +88,7 @@
                     <c:forEach var="institution" items="${institutions}">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="institution" name="institution" value="${institution.id}" />
+                            <form:radiobutton path="institution" name="institution" value="${institution.id}" id="istitution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">${institution.name}</div>
@@ -111,22 +113,25 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru</h4>
                             <div class="form-group form-group--inline">
-                                <label> Ulica <form:input path="street" type="text" /> </label>
+                                <label> Ulica <form:input path="street" type="text" id="street" /> </label>
+                                <p><form:errors path="street"/> </p>
                             </div>
 
                             <div class="form-group form-group--inline">
-                                <label> Miasto <form:input path="city" type="text"/> </label>
+                                <label> Miasto <form:input path="city" type="text" id="city"/> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Kod pocztowy <form:input path="zipCode" type="text"/>
+                                    Kod pocztowy <form:input path="zipCode" type="text" id="zipCode"/>
                                 </label>
+                                <p><form:errors path="zipCode"/> </p>
+
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Numer telefonu <form:input path="phoneNumber" type="phone"/>
+                                    Numer telefonu <form:input path="phoneNumber" type="phone" id="phoneNumber"/>
                                 </label>
                             </div>
                         </div>
@@ -134,17 +139,17 @@
                         <div class="form-section--column">
                             <h4>Termin odbioru</h4>
                             <div class="form-group form-group--inline">
-                                <label> Data <form:input path="pickUpDate" type="date"/> </label>
+                                <label> Data <form:input path="pickUpDate" type="date" id="date"/> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
-                                <label> Godzina <form:input path="pickUpTime" type="time" /> </label>
+                                <label> Godzina <form:input path="pickUpTime" type="time" id="time" /> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
                                     Uwagi dla kuriera
-                                    <form:textarea path="pickUpComment"  rows="5"/>
+                                    <form:textarea path="pickUpComment"  rows="5" id="description"/>
                                 </label>
                             </div>
                         </div>
@@ -166,14 +171,14 @@
                             <ul>
                                 <li>
                                     <span class="icon icon-bag"></span>
-                                    <span class="summary--text"
+                                    <span class="summary--text" id="quantityView"
                                     > worki ubrań w dobrym stanie dla dzieci</span
                                     >
                                 </li>
 
                                 <li>
                                     <span class="icon icon-hand"></span>
-                                    <span class="summary--text"
+                                    <span class="summary--text" id="institutionView"
                                     >Dla fundacji "Mam marzenie" w Warszawie</span
                                     >
                                 </li>
@@ -184,19 +189,19 @@
                             <div class="form-section--column">
                                 <h4>Adres odbioru:</h4>
                                 <ul>
-                                    <li>Prosta 51</li>
-                                    <li>Warszawa</li>
-                                    <li>99-098</li>
-                                    <li>123 456 789</li>
+                                    <li id="streetView">Polna 51</li>
+                                    <li id="cityView">Warszawa</li>
+                                    <li id="zipCodeView">99-098</li>
+                                    <li id="phoneNumberView">123 456 789</li>
                                 </ul>
                             </div>
 
                             <div class="form-section--column">
                                 <h4>Termin odbioru:</h4>
                                 <ul>
-                                    <li>13/12/2018</li>
-                                    <li>15:40</li>
-                                    <li>Brak uwag</li>
+                                    <li id="dateView">13/12/2018</li>
+                                    <li id="timeView">15:40</li>
+                                    <li id="descriptionView">Brak uwag</li>
                                 </ul>
                             </div>
                         </div>

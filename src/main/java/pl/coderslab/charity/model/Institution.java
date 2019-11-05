@@ -17,8 +17,11 @@ public class Institution {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = true)
+    @NotBlank
     private String name;
+    @NotBlank
     private String description;
+    private Boolean trusted;
 
 
     @OneToMany(mappedBy = "institution")

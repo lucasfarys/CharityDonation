@@ -13,7 +13,8 @@ public class InstitutionDTO {
     private Long id;
     private String name;
     private String description;
-    private boolean torf;
+    private boolean trusted;
+
 
     private List<Donation> donations;
 }

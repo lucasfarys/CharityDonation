@@ -4,14 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "donations")
 public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +22,11 @@ public class Donation {
     String street;
     @Column(nullable = false)
     String city;
-
-
-    String zip_code;
-    LocalDate pick_up_date;
-    LocalDateTime pick_up_time;
-    String pick_up_comment;
+    String zipCode;
+    LocalDate pickUpDate;
+    LocalTime pickUpTime;
+    String pickUpComment;
+    String phoneNumber;
 
 
     @OneToMany(mappedBy = "donation")

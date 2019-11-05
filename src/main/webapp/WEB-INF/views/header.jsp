@@ -8,7 +8,8 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li><a href="${mainUrl}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
-            <li><a href="#" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+            <li><a href="${mainUrl}user/editUser" class="btn btn--small btn--without-border">Edytuj</a></li>
+            <li><a href="${mainUrl}register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
         </ul>
 
 

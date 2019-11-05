@@ -3,7 +3,7 @@ package pl.coderslab.charity.dto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
-import pl.coderslab.charity.validation.ZipCode;
+import pl.coderslab.charity.validation.ValidZipCode;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
@@ -21,7 +21,7 @@ public class DonationDTO {
     private String street;
     @NotBlank
     private String city;
-    @ZipCode
+    @ValidZipCode
     private String zipCode;
     @NotBlank
     @DateTimeFormat(pattern = "yyyy-MM-dd")

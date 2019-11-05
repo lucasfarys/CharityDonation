@@ -45,5 +45,6 @@ public class DonationService {
         donation.setCategories(categories);
         donation.setInstitution(institution);
         donationRepository.save(donation);
+
     }
 }
