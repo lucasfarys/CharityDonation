@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ public class Institution {
 
 
     @OneToMany(mappedBy = "institution")
-    private List<Donation> donations;
+    private List<Donation> donations = new ArrayList<>();
 
 
     @Override

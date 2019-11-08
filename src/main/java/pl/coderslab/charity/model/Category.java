@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,6 +19,6 @@ public class Category {
     String name;
 
 
-    @ManyToOne
-    Donation donation;
+    @ManyToMany
+    List <Donation> donation = new ArrayList<>();
 }
