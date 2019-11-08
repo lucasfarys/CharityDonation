@@ -23,24 +23,20 @@
                     <td>Nazwisko</td>
                     <td>Nowe Hasło</td>
                     <td>Powtórz hasło</td>
-                    <td>Stare hasło</td>
                 </tr>
                 <tr>
                     <td><form:input type="text" path="name" placeholder="${user.name}"/></td>
                     <td><form:input type="text" path="surname" placeholder="${user.surname}"/></td>
                     <td><form:input type="password" path="newPassword" placeholder="........"/></td>
                     <td><form:input type="password" path="reNewPassword" placeholder="........"/></td>
-                    <td><form:input type="password" path="oldPassword" placeholder="........"/></td>
                 </tr>
                 <tr>
-                    <form:errors path="oldPassword"/>
                     <form:errors path="name"/>
                     <form:errors path="surname"/>
                     <form:errors path="newPassword"/>
                     <form:errors path="reNewPassword"/>
                 </tr>
             </table>
-            <%--<form:input path="email" type="hidden"  value="${user.email}"/>--%>
             <input type="submit" value="Zapisz zmiany">
         </div>
     </form:form>

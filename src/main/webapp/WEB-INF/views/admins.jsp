@@ -25,12 +25,19 @@
                 <td>Usuń</td>
             </tr>
             <c:forEach var="admin" items="${admins}">
-                <tr>
-                    <td>${admin.email}</td>
-                    <td>${admin.name}</td>
-                    <td>${admin.surname}</td>
-                </tr>
+                <form type="get" action="/admin/editAdmin">
+                    <tr>
+                        <td>${admin.email}</td>
+                        <td>${admin.name}</td>
+                        <td>${admin.surname}</td>
+                        <input type="hidden" value="${admin.email}" name="username">
+                        <td><input type="submit" value="Edytuj"></td>
+                    </tr>
+                </form>
             </c:forEach>
+            <form type="get" action="/admin/newAdmin">
+                <input type="submit" value="Nowy Administrator">
+            </form>
         </table>
     </div>
     <jsp:include page="footer.jsp"/>

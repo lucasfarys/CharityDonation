@@ -26,8 +26,11 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
     }
-    public User findByUserName(String username) {
-        return userRepository.findByEmail(username);
+    public UserDTO findByUserName(String username) {
+        ModelMapper modelMapper = new ModelMapper();
+        User user =  userRepository.findByEmail(username);
+        UserDTO userDTO = modelMapper.map(user,UserDTO.class);
+        return userDTO;
     }
     public void registerUser(UserDTO userDTO){
         ModelMapper modelMapper = new ModelMapper();
@@ -37,10 +40,17 @@ public class UserService {
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
-    public void registerEditUser(EditUserDTO editUserDTO){
+    public void editUser(EditUserDTO editUserDTO){
         ModelMapper modelMapper = new ModelMapper();
         User user = modelMapper.map(editUserDTO,User.class);
         user.setPassword(passwordEncoder.encode(editUserDTO.getNewPassword()));
+    }
+    public void editAdmin (UserDTO userDTO){
+        User admin = userRepository.findByEmail(userDTO.getEmail());
+        admin.setEmail(userDTO.getEmail());
+        admin.setName(userDTO.getName());
+        admin.setSurname(userDTO.getSurname());
+        userRepository.save(admin);
     }
     public boolean isEmailAvailable(String email) {
         long count = userRepository.countByEmail(email);
@@ -49,16 +59,6 @@ public class UserService {
         }
         else {
             return true;
-        }
-    }
-    public boolean isPasswordCorrect(EditUserDTO editUserDTO){
-        User user = userRepository.findByEmail(SecurityContextHolder.getContext().
-                getAuthentication().getName());
-        System.out.println(user.getPassword());
-        if(passwordEncoder.matches(user.getPassword(),editUserDTO.getOldPassword())){
-            return true;
-        }else{
-            return false;
         }
     }
 }

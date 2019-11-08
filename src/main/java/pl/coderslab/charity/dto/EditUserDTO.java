@@ -18,8 +18,6 @@ public class EditUserDTO {
     @Email
     private String email;
     @ValidPassword(message = "Hasło jest niepoprawne")
-    private  String oldPassword;
-    @ValidPassword(message = "Hasło jest niepoprawne")
     private String newPassword;
     @ValidPassword(message = "Powtórzone hasło różni się.")
     private  String reNewPassword;

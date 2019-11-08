@@ -3,21 +3,17 @@ package pl.coderslab.charity.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
-import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import pl.coderslab.charity.service.SpringDataUserDetailsService;
 import pl.coderslab.charity.validation.MySimpleUrlAuthenticationSuccessHandler;
 
-import java.util.HashMap;
-import java.util.Map;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -35,9 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/register").permitAll()
-                .antMatchers("/snippet").authenticated()
-                .antMatchers("/admin/**/").hasRole("ADMIN")
-                .anyRequest().permitAll()
+                .antMatchers(HttpMethod.GET,"/snippet").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/editUser").fullyAuthenticated()
                 .and().formLogin()
                 .loginPage("/login")
                 .permitAll()
@@ -45,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email").passwordParameter("password")
                 .and().logout()
                 .permitAll()
+//                .and().cors().and().csrf().disable();
+
         ;}
 
 
@@ -56,16 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Bean
     public PasswordEncoder delegatingPasswordEncoder() {
-        PasswordEncoder defaultEncoder = new StandardPasswordEncoder();
-        Map<String, PasswordEncoder> encoders = new HashMap<>();
-        encoders.put("bcrypt", new BCryptPasswordEncoder());
-        encoders.put("scrypt", new SCryptPasswordEncoder());
-
-        DelegatingPasswordEncoder passworEncoder = new DelegatingPasswordEncoder(
-                "bcrypt", encoders);
-        passworEncoder.setDefaultPasswordEncoderForMatches(defaultEncoder);
-
-        return passworEncoder;
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
     @Bean
     public SpringDataUserDetailsService customUserDetailsService() {

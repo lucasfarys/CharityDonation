@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.EditUserDTO;
-import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
@@ -32,15 +31,10 @@ public class UserController {
     }
     @PostMapping("/editUser")
     public String editUser(@ModelAttribute @Valid EditUserDTO editUserDTO, BindingResult result){
-        System.out.println(editUserDTO.getOldPassword());
         if(result.hasErrors()){
             return "editUser";
         }
-        if(!userService.isPasswordCorrect(editUserDTO)){
-            result.rejectValue("oldPassword","Błędne hasło");
-            return "editUser";
-        }
-        userService.registerEditUser(editUserDTO);
+        userService.editUser(editUserDTO);
         return "redirect:/";
     }
 }

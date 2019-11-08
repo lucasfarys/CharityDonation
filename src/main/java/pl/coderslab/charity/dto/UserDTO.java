@@ -2,10 +2,12 @@ package pl.coderslab.charity.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.validation.ValidPassword;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,4 +24,6 @@ public class UserDTO {
     private String password;
     @ValidPassword
     private  String rePassword;
+    private Set<Role> roles;
+
 }
