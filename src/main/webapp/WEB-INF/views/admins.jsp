@@ -32,6 +32,7 @@
                         <td>${admin.surname}</td>
                         <input type="hidden" value="${admin.email}" name="username">
                         <td><input type="submit" value="Edytuj"></td>
+                        <td><a type="button" href="/admin/deleteUser/${admin.email}">Usuń</a> </td>
                     </tr>
                 </form>
             </c:forEach>

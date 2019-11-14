@@ -21,4 +21,5 @@ public class EditUserDTO {
     private String newPassword;
     @ValidPassword(message = "Powtórzone hasło różni się.")
     private  String reNewPassword;
+    private Boolean active;
 }

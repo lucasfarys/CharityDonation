@@ -14,7 +14,7 @@ public class RoleService {
 
     public Role findRole(String name){
         Role role = roleRepository.findByName(name);
-        role.getUsers().size();
+//        role.getUsers().size();
         return role;
     }
 }

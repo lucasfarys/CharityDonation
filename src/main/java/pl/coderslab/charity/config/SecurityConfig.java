@@ -41,8 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("email").passwordParameter("password")
                 .and().logout()
                 .permitAll()
-//                .and().cors().and().csrf().disable();
-
         ;}
 
 

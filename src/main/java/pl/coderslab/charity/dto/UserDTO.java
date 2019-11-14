@@ -25,6 +25,9 @@ public class UserDTO {
     private String password;
     @ValidPassword
     private  String rePassword;
+    private Boolean active;
+    private String uuid;
+
     private Set<Role> roles = new HashSet<>();
 
 }

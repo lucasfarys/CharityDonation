@@ -20,6 +20,7 @@
             <tr>
                 <td><a type="button" href="/admin/institution">Zarządzanie Instytucjami</a> </td>
                 <td><a type="button" href="/admin/admins">Zarządzanie Adminami</a> </td>
+                <td><a type="button" href="/admin/users">Zarządzanie Użytkownikami</a> </td>
             </tr>
         </table>
     </div>

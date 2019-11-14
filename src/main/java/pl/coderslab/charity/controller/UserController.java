@@ -4,10 +4,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.dto.EditUserDTO;
 import pl.coderslab.charity.service.UserService;
 
@@ -36,5 +33,21 @@ public class UserController {
         }
         userService.editUser(editUserDTO);
         return "redirect:/";
+    }
+    @GetMapping("/activation/{activation}")
+    @ResponseBody
+    public String activationAccount(@PathVariable String activation){
+        String message;
+        if(userService.activationAccount(activation)){
+            message = "Aktywacja zakończona pomyślnie";
+        }else{
+            message = "aktywacja nieudana";
+        }
+        return message;
+    }
+    @GetMapping("/resetPassword")
+    public String prepareRestorPassword(Model model){
+
+        return "resetPassword";
     }
 }

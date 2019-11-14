@@ -10,6 +10,7 @@
             <li><a href="${mainUrl}login" class="btn btn--small btn--without-border">Zaloguj</a></li>
             <li><a href="${mainUrl}user/editUser" class="btn btn--small btn--without-border">Edytuj</a></li>
             <li><a href="${mainUrl}register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+            <li><a href="${mainUrl}sendEmail" class="btn btn--small btn--highlighted">Wyślij email</a></li>
         </ul>
 
 

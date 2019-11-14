@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.dto.UserDTO;
+import pl.coderslab.charity.service.EmailService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
@@ -17,9 +18,11 @@ import javax.validation.Valid;
 @RequestMapping("/register")
 public class RegistrationController {
     private UserService userService;
+    private EmailService emailService;
 
-    public RegistrationController(UserService userService) {
+    public RegistrationController(UserService userService, EmailService emailService) {
         this.userService = userService;
+        this.emailService = emailService;
     }
 
     @GetMapping
@@ -43,4 +46,5 @@ public class RegistrationController {
         userService.registerUser(user);
         return "redirect:/login";
     }
+
 }
