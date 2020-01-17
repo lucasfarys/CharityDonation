@@ -30,6 +30,8 @@ public class User {
 
     @ManyToMany(mappedBy = "users")
     private List<Role> roles = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<Uuid> uuidList = new ArrayList<>();
 
     @Override
     public String toString() {

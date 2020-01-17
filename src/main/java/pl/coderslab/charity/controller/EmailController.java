@@ -3,9 +3,7 @@ package pl.coderslab.charity.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.service.EmailService;
 import pl.coderslab.charity.service.UserService;
 
@@ -18,18 +16,19 @@ public class EmailController {
         this.userService = userService;
         this.emailService = emailService;
     }
-
-    @GetMapping("/sendEmail")
-    public String prepareSendEmailPage(Model model){
-        model.addAttribute("users",userService.findAllUsers());
-        return "sendEmail";
-    }
     @PostMapping("/sendEmail")
-    public String sendEmail(@RequestParam String selectedUser, @RequestParam String message,
-                            @RequestParam String subject){
-        if(message!="" || subject!=""){
-            emailService.sendSimpleMessage(selectedUser,subject,message);
+    public String sendEmail(@RequestParam String name, @RequestParam String surname,
+                            @RequestParam String message, Model model){
+        System.out.println("dupa");
+        System.out.println(name);
+        System.out.println(surname);
+        System.out.println(message);
+        if(message!=""){
+            emailService.sendSimpleMessage(name,surname,message);
+            model.addAttribute("message", "Wiadomość wysłana");
+        }else{
+            model.addAttribute("message", "Nieudana próba wysłania wiadomości");
         }
-        return "redirect:/";
+        return "redirect:/#contact";
     }
 }

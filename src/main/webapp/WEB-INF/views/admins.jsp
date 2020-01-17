@@ -14,9 +14,10 @@
     <jsp:include page="header.jsp"/>
 </head>
 <body>
-    <H1>PANEL ZARZĄDZANIA ADMINISTRATORAMI</H1>
+<section class="login-page">
+    <H1 id="form">PANEL ZARZĄDZANIA ADMINISTRATORAMI</H1>
     <div>
-        <table>
+        <table border="1">
             <tr>
                 <td>email</td>
                 <td>Imię</td>
@@ -31,16 +32,17 @@
                         <td>${admin.name}</td>
                         <td>${admin.surname}</td>
                         <input type="hidden" value="${admin.email}" name="username">
-                        <td><input type="submit" value="Edytuj"></td>
-                        <td><a type="button" href="/admin/deleteUser/${admin.email}">Usuń</a> </td>
+                        <td><input type="submit" value="Edytuj" class="btn btn--without-border"></td>
+                        <td><a href="/admin/deleteUser/${admin.email}" class="btn btn--without-border">Usuń</a> </td>
                     </tr>
                 </form>
             </c:forEach>
-            <form type="get" action="/admin/newAdmin">
-                <input type="submit" value="Nowy Administrator">
-            </form>
         </table>
+            <a href="/admin/newAdmin#form" class="btn btn--without-border">Nowy Admin</a>
+            <a href="/admin#form" class="btn btn--without-border">Wstecz</a>
+
     </div>
+</section>
     <jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -8,12 +8,15 @@ import pl.coderslab.charity.dto.EditUserDTO;
 import pl.coderslab.charity.dto.UserDTO;
 import pl.coderslab.charity.model.Role;
 import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.model.Uuid;
 import pl.coderslab.charity.repository.RoleRepository;
 import pl.coderslab.charity.repository.UserRepository;
+import pl.coderslab.charity.repository.UuidRepository;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -25,13 +28,15 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
     private RoleRepository roleRepository;
     private EmailService emailService;
+    private UuidRepository uuidRepository;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder,
-                       RoleRepository roleRepository, EmailService emailService) {
+                       RoleRepository roleRepository, EmailService emailService, UuidRepository uuidRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
         this.emailService = emailService;
+        this.uuidRepository = uuidRepository;
     }
     public UserDTO findByUserName(String username) {
         ModelMapper modelMapper = new ModelMapper();
@@ -43,17 +48,9 @@ public class UserService {
     public void registerUser(UserDTO userDTO){
         ModelMapper modelMapper = new ModelMapper();
         User user = modelMapper.map(userDTO,User.class);
-        String digest = "";
+        String digest = createUuid();
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        try {
-            MessageDigest salt = MessageDigest.getInstance("SHA-256");
-            salt.update(UUID.randomUUID().toString().getBytes("UTF-8"));
-            digest = bytesToHex(salt.digest());
-            user.setUuid(digest);
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
+        user.setUuid(digest);
         Role role = roleRepository.findByName("ROLE_USER");
         role.getUsers().add(user);
         user.getRoles().add(role);
@@ -117,5 +114,35 @@ public class UserService {
         }else{
             return false;
         }
+    }
+    public String createUuid (){
+        String digest ="";
+        try {
+            MessageDigest salt = MessageDigest.getInstance("SHA-256");
+            salt.update(UUID.randomUUID().toString().getBytes("UTF-8"));
+            digest = bytesToHex(salt.digest());
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return digest;
+    }
+    public void sendRestorePasswordEmailAndSaveUuid(String email){
+        Uuid uuid = new Uuid();
+        uuid.setUuid(createUuid());
+        uuid.setDateTime(LocalDateTime.now());
+        uuid.setUser(userRepository.findByEmail(email));
+        uuidRepository.save(uuid);
+        String subject = "Reset password";
+        String message = "http://localhost:8080/user/newPassword/" + uuid.getUuid();
+        emailService.sendSimpleMessage(email,subject,message);
+    }
+    public Long countByUuidList(String uuid){
+        return uuidRepository.countAllByUuid(uuid);
+    }
+    public void changePassword(String passsword, String uuid){
+        Uuid uuidObject = uuidRepository.findAllByUuid(uuid);
+        User user =  userRepository.findAllByUuidListIn(uuidObject);
+        user.setPassword(passwordEncoder.encode(passsword));
+        userRepository.save(user);
     }
 }

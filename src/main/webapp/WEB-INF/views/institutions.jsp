@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:url value="/" var="mainUrl"/>
+
 <%--
   Created by IntelliJ IDEA.
   User: lukasz
@@ -15,26 +17,29 @@
     <jsp:include page="header.jsp"/>
 </head>
 <body>
-    <div>
-        <H1>List instytucji</H1>
-    </div>
-    <div>
-        <table border="1">
-            <tr>
-                <td>Nazwa Instytucji</td>
-                <td>Edycja</td>
-                <td>Usuń</td>
-            </tr>
-            <c:forEach var="institution" items="${institutions}">
+    <section class="login-page">
+        <h1 id="form">Lista instytucji</h1>
+        <div>
+            <table border="1">
                 <tr>
-                    <td>${institution.name}</td>
-                    <td><a type="button" href="/admin/editInstitution/${institution.id}"/>Edycja</td>
-                    <td><a type="button" href="/admin/deleteInstitution/${institution.id}"/>Usuń</td>
+                    <td>Nazwa Instytucji</td>
+                    <td>Edycja</td>
+                    <td>Usuń</td>
                 </tr>
-            </c:forEach>
-        </table>
-    </div><br>
-    <a type="button" href="/admin/createInstitution">Dodaj nową instytucję</a>
+                <c:forEach var="institution" items="${institutions}">
+                    <tr>
+                        <td>${institution.name}</td>
+                        <td><a href="/admin/editInstitution/${institution.id}#form" class="btn btn--without-border">Edycja</a></td>
+                        <td><a href="/admin/deleteInstitution/${institution.id}#form" class="btn btn--without-border">Usuń</a></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div><br>
+        <div>
+        <a href="${mainUrl}admin/createInstitution#form" class="btn btn--without-border">Dodaj nową Instytucję</a>
+        <a href="/admin#form" class="btn btn--without-border">Wstecz</a>
+        </div>
+    </section>
     <jsp:include page="footer.jsp"/>
 </body>
 </html>

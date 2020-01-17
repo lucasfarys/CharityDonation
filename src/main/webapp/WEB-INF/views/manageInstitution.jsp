@@ -15,8 +15,10 @@
     <jsp:include page="header.jsp"/>
 </head>
 <body>
+<section class="login-page">
 <form:form method="post" modelAttribute="institution">
-    <div id="editInstitution">
+<div id="editInstitution">
+        <h1 id="form">Tworzenie / Edycja Instytucji</h1>
         <div class="form-group">
             <form:input path="name" type="text" placeholder="Nazwa instytucji" id="name" />
             <p><form:errors path="name"/></p>
@@ -25,14 +27,21 @@
             <form:input path="description" type="text" placeholder="Opis" />
             <p><form:errors path="description"/></p>
         </div>
-        <div class="form-group">
-            <form:radiobutton path="trusted" id="trusted" label="Zaufana Instytucja" value="true"/>
-            <p><form:errors path="trusted"/></p>
-        </div>
+    <div class="form-group form-group--checkbox">
+        <label>
+            <form:radiobutton path="trusted" value="true" id="trusted"/>
+            <span class="checkbox radio"></span>
+            <span class="description">
+                  <div class="title">Instytucja zaufana</div>
+                </span>
+        </label><br>
+    </div>
         <form:input path="id" type="hidden" id="id" value="${institution.id}"/>
-        <p><input type="submit" value="Zapisz zmiany"></p>
+        <input type="submit" class="btn btn--without-border" value="Zapisz zmiany">
+        <a href="/admin/institution#form" class="btn btn--without-border">Wstecz</a>
     </div>
 </form:form>
+</section>
 </body>
     <jsp:include page="footer.jsp"/>
 </html>

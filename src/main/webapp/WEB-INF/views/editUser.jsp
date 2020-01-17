@@ -16,6 +16,8 @@
 </head>
 <body>
     <jsp:include page="header.jsp"/>
+    <section class="login-page">
+    <h1 id="form">Edycja użytkownika</h1>
     <form:form modelAttribute="editUserDTO" method="post">
         <div>
             <table>
@@ -25,14 +27,14 @@
                     <td>Nowe Hasło</td>
                     <td>Powtórz hasło</td>
                     <sec:authorize access="hasRole('ADMIN')">
-                        <td>Aktywacja Użytkownika</td>
+                        <td>Active</td>
                     </sec:authorize>
                 </tr>
                 <tr>
-                    <td><form:input type="text" path="name" placeholder="${user.name}"/></td>
-                    <td><form:input type="text" path="surname" placeholder="${user.surname}"/></td>
-                    <td><form:input type="password" path="newPassword" placeholder="........"/></td>
-                    <td><form:input type="password" path="reNewPassword" placeholder="........"/></td>
+                    <td><form:input type="text" path="name" id="name" value="${user.name}"/></td>
+                    <td><form:input type="text" path="surname" value="${user.surname}"/></td>
+                        <td><form:input type="password" path="newPassword" value="........"/></td>
+                        <td><form:input type="password" path="reNewPassword" value="........" onfocus=""/></td>
                     <sec:authorize access="hasRole('ADMIN')">
                         <td><form:checkbox path="active"/></td>
                     </sec:authorize>
@@ -44,11 +46,14 @@
                     <form:errors path="reNewPassword"/>
                 </tr>
             </table>
+            <input type="submit" class="btn btn--without-border" value="Zapisz zmiany">
+            <a href="${mainUrl}users#form" class="btn btn--without-border">Wstecz</a>
+
             <form:input path="email" type="hidden" value="${user.email}"/>
             <form:input path="id" type="hidden" value="${user.id}"/>
-            <input type="submit" value="Zapisz zmiany">
         </div>
     </form:form>
+    </section>
 </body>
     <jsp:include page="footer.jsp"/>
 </html>

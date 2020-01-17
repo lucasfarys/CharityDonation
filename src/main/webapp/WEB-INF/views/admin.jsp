@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<c:url value="/" var="mainUrl"/>
 <%--
   Created by IntelliJ IDEA.
   User: lukasz
@@ -14,16 +16,14 @@
 </head>
 <body>
     <jsp:include page="header.jsp"/>
-    <h1>Panel Administratora</h1>
-    <div>
-        <table>
-            <tr>
-                <td><a type="button" href="/admin/institution">Zarządzanie Instytucjami</a> </td>
-                <td><a type="button" href="/admin/admins">Zarządzanie Adminami</a> </td>
-                <td><a type="button" href="/admin/users">Zarządzanie Użytkownikami</a> </td>
-            </tr>
-        </table>
-    </div>
+    <section class="login-page">
+    <h1 id="form">Panel Administratora</h1>
+        <div class="form-group form-group--buttons">
+            <a href="${mainUrl}admin/institution#form" class="btn btn--without-border">Zarządzanie Instytucjami</a>
+            <a href="${mainUrl}admin/admins#form" class="btn btn--without-border">Zarządzanie Adminami</a>
+            <a href="${mainUrl}admin/users#form" class="btn btn--without-border">Zarządzanie Użytkownikami</a>
+        </div>
+    </section>
 </body>
     <jsp:include page="footer.jsp"/>
 </html>
