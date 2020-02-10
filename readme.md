@@ -17,4 +17,4 @@ Użyte technologie:
 
 Główna strona
 
-![](img/Main_Page.mp4)
+![Glowna_Strona](img/Main_Page.mp4)
