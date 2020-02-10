@@ -29,5 +29,5 @@ Użyte technologie:
 
 # Formularz przekazania darów
 
-![Przekazanie darów](img/donation.gif)
+![Przekazanie darów](img/Donation.gif)
 
