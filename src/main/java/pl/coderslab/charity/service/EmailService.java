@@ -21,10 +21,14 @@ public class EmailService {
         javaMailSender.send(message);
     }
     public void sendActivationEmail(String digest, String emailAddress){
-        String subject = "Aktywacja konta";
-        StringBuilder message = new StringBuilder();
-        message.append("http://localhost:8080/user/activation/");
-        message.append(digest);
-        sendSimpleMessage(emailAddress,subject,message.toString());
+        SimpleMailMessage message = new SimpleMailMessage();
+        String subject = "Potwierdź email";
+        StringBuilder text = new StringBuilder();
+        text.append("Aby potwierdzić email kliknij link: http://localhost:8080/user/activation/");
+        text.append(digest);
+        message.setTo(emailAddress);
+        message.setSubject(subject);
+        message.setText(text.toString());
+        javaMailSender.send(message);
     }
 }

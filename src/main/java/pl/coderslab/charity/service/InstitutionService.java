@@ -36,6 +36,9 @@ public class InstitutionService {
     public Institution getInstitutionById(Long id){
         return institutionRepository.findIstitutionById(id);
     }
+    public Institution getInstitutionByName(String name){
+        return institutionRepository.findInstitutionByName(name);
+    }
     public void deleteInstitution(Long id){
         institutionRepository.deleteById(id);
     }

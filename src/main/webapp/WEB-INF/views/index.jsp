@@ -64,7 +64,7 @@
         </div>
     </div>
 
-    <a href="${mainUrl}register" class="btn btn--large">Załóż konto</a>
+    <a href="${mainUrl}register#form" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us" id="aboutUs">

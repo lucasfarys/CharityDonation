@@ -6,12 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.dto.EditUserDTO;
+import pl.coderslab.charity.dto.UserDTO;
+import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.repository.UuidRepository;
+import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.EmailService;
 import pl.coderslab.charity.service.UserService;
 import pl.coderslab.charity.validation.ValidPassword;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
+import java.util.List;
 
 
 @Controller
@@ -20,12 +25,14 @@ public class UserController {
     private UserService userService;
     private EmailService emailService;
     private UuidRepository uuidRepository;
+    private DonationService donationService;
 
     public UserController(UserService userService, EmailService emailService,
-                          UuidRepository uuidRepository) {
+                          UuidRepository uuidRepository, DonationService donationService) {
         this.userService = userService;
         this.emailService = emailService;
         this.uuidRepository = uuidRepository;
+        this.donationService = donationService;
     }
     @GetMapping("/editUser")
     public String prepareEditUser(Model model){
@@ -91,8 +98,16 @@ public class UserController {
         return "redirect:/login";
     }
     @GetMapping("/myDonation")
-    public String prepareMyDonation(){
-
+    public String prepareMyDonation( Model model){
+        UserDTO user = userService.findByUserName(SecurityContextHolder.getContext().getAuthentication().getName());
+        List<Donation> myDonations = donationService.findMyDonations(user.getId());
+        model.addAttribute("myDonations",myDonations);
         return "myDonation";
+    }
+    @GetMapping("/myDonationDetails")
+    public String myDonationDetails(@RequestParam Long id, Model model){
+        Donation donation = donationService.findDonation(id);
+        model.addAttribute("myDonation",donation);
+        return "myDonationDetails";
     }
 }

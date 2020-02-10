@@ -27,7 +27,6 @@ public class CategoryService {
             categoryDTO.setId(p.getId());
             categoryDTO.setName(p.getName());
             result.add(categoryDTO);
-            System.out.println(result);
         });
 
         return result;

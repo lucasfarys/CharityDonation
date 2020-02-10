@@ -19,16 +19,12 @@ public class EmailController {
     @PostMapping("/sendEmail")
     public String sendEmail(@RequestParam String name, @RequestParam String surname,
                             @RequestParam String message, Model model){
-        System.out.println("dupa");
-        System.out.println(name);
-        System.out.println(surname);
-        System.out.println(message);
         if(message!=""){
             emailService.sendSimpleMessage(name,surname,message);
-            model.addAttribute("message", "Wiadomość wysłana");
+            model.addAttribute("message", "Dziękujemy za wiadomość.");
         }else{
             model.addAttribute("message", "Nieudana próba wysłania wiadomości");
         }
-        return "redirect:/#contact";
+        return "index";
     }
 }

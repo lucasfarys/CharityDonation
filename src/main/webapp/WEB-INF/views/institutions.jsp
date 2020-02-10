@@ -36,8 +36,8 @@
             </table>
         </div><br>
         <div>
-        <a href="${mainUrl}admin/createInstitution#form" class="btn btn--without-border">Dodaj nową Instytucję</a>
-        <a href="/admin#form" class="btn btn--without-border">Wstecz</a>
+            <a href="/admin#form" class="btn btn--without-border">Wstecz</a>
+            <a href="${mainUrl}admin/createInstitution#form" class="btn btn--without-border">Dodaj nową Instytucję</a>
         </div>
     </section>
     <jsp:include page="footer.jsp"/>

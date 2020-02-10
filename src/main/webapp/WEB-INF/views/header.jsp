@@ -8,8 +8,9 @@
     <nav class="container container--70">
         <ul class="nav--actions">
             <li><a href="${mainUrl}login#form" class="btn btn--small btn--without-border"><spring:message code="lang.login" text="default"/></a></li>
-            <li><a href="${mainUrl}user/myDonation" class="btn btn--small btn--without-border"><spring:message code="lang.myDonation" text="default"/></a></li>
-            <li><a href="${mainUrl}user/editUser" class="btn btn--small btn--without-border"><spring:message code="lang.edit" text="default"/></a></li>
+            <li><a href="${mainUrl}user/myDonation#form" class="btn btn--small btn--without-border"><spring:message code="lang.myDonation" text="default"/></a></li>
+            <li><a href="${mainUrl}snippet#form" class="btn btn--small btn--without-border"><spring:message code="lang.newDonation" text="default"/></a></li>
+            <li><a href="${mainUrl}user/editUser#form" class="btn btn--small btn--without-border"><spring:message code="lang.edit" text="default"/></a></li>
             <li><a href="${mainUrl}register#form" class="btn btn--small btn--highlighted"><spring:message code="lang.register" text="default"/></a></li>
             <li><a href="${mainUrl}#contact" class="btn btn--small btn--highlighted"><spring:message code="lang.sendEmail" text="default"/></a></li>
             <li>

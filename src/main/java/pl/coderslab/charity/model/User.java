@@ -32,6 +32,8 @@ public class User {
     private List<Role> roles = new ArrayList<>();
     @OneToMany(mappedBy = "user")
     private List<Uuid> uuidList = new ArrayList<>();
+    @OneToMany(mappedBy = "institution")
+    private List<Donation> donations = new ArrayList<>();
 
     @Override
     public String toString() {

@@ -38,9 +38,8 @@
                 </form>
             </c:forEach>
         </table>
-            <a href="/admin/newAdmin#form" class="btn btn--without-border">Nowy Admin</a>
-            <a href="/admin#form" class="btn btn--without-border">Wstecz</a>
-
+        <a href="/admin#form" class="btn btn--without-border">Wstecz</a>
+        <a href="/admin/newAdmin#form" class="btn btn--without-border">Nowy Admin</a>
     </div>
 </section>
     <jsp:include page="footer.jsp"/>

@@ -39,7 +39,7 @@
             </div>
         </div>
 
-        <div class="form--steps-container">
+        <div class="form--steps-container" id="form">
             <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
             <form:form action="${mainUrl}snippet" modelAttribute="donation" method="post">
@@ -64,7 +64,7 @@
 
                 <!-- STEP 2 -->
                 <div data-step="2">
-                    <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
+                    <h3>Podaj liczbę worków, w które spakowałeś/aś rzeczy:</h3>
 
                     <div class="form-group form-group--inline">
                         <label>
@@ -88,7 +88,7 @@
                     <c:forEach var="institution" items="${institutions}">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <form:radiobutton path="institution" name="institution" value="${institution.id}" id="istitution"/>
+                            <form:radiobutton path="institution" name="institution" value="${institution.name}" id="istitution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">${institution.name}</div>
@@ -171,16 +171,14 @@
                             <ul>
                                 <li>
                                     <span class="icon icon-bag"></span>
-                                    <span class="summary--text" id="quantityView"
-                                    > worki ubrań w dobrym stanie dla dzieci</span
-                                    >
+                                    <span class="summary--text" id="quantityView">
+                                        worki ubrań w dobrym stanie dla dzieci</span>
                                 </li>
 
                                 <li>
                                     <span class="icon icon-hand"></span>
-                                    <span class="summary--text" id="institutionView"
-                                    >Dla fundacji "Mam marzenie" w Warszawie</span
-                                    >
+                                    <span class="summary--text" id="institutionView">
+                                        Dla fundacji "Mam marzenie" w Warszawie</span>
                                 </li>
                             </ul>
                         </div>

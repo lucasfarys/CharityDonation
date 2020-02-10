@@ -165,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // TODO: get data from inputs and show them in summary
       if(this.currentStep == 5) {
+        var j = document.querySelector('input[name="institution"]:checked');
         document.getElementById("streetView").innerText = document.getElementById("street").value;
         document.getElementById("cityView").innerText = document.getElementById("city").value;
         document.getElementById("zipCodeView").innerText = document.getElementById("zipCode").value;
@@ -173,9 +174,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("timeView").innerText = document.getElementById("time").value;
         document.getElementById("descriptionView").innerText = document.getElementById("description").value;
         document.getElementById("quantityView").innerText = document.getElementById("quantity").value + " worków";
-        if($('input[name=institution]:checked').length>0) {
-          console.log("test");
-        }
+        document.getElementById("institutionView").innerText = document.querySelector('input[name="institution"]:checked').value;
+       console.log(document.querySelector('input[name="institution"]:checked'));
       }
     }
 

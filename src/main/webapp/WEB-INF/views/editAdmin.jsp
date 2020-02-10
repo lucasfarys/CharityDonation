@@ -15,7 +15,7 @@
     <jsp:include page="header.jsp"/>
 </head>
 <body>
-    <H1>Edycja Tworzenie Admina</H1>
+    <H1 id="form">Edycja Tworzenie Admina</H1>
         <div>
             <table>
                 <tr>

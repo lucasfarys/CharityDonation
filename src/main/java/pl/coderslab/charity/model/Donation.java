@@ -26,7 +26,7 @@ public class Donation {
     String city;
     String zipCode;
     LocalDate pickUpDate;
-    LocalTime pickUpTime;
+    String pickUpTime;
     String pickUpComment;
     String phoneNumber;
 
@@ -35,6 +35,8 @@ public class Donation {
     List<Category> categories = new ArrayList<>();
     @ManyToOne
     Institution institution;
+    @ManyToOne
+    User user;
 
     @Override
     public String toString() {

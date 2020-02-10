@@ -21,7 +21,7 @@
     <h2 id="form">Załóż konto</h2>
     <form:form modelAttribute="user" method="post">
         <div class="form-group">
-            <form:input path="email" type="email" name="email" placeholder="Email" />
+            <form:input path="email" type="email" name="email" placeholder="Email"/>
             <p><form:errors path="email"/></p>
         </div>
         <div class="form-group">
@@ -34,11 +34,11 @@
         </div>
         <div class="form-group">
             <form:input path="password" type="password" name="password" placeholder="Hasło" />
-            <p><form:errors path="password"/></p>
+            <h3><p><form:errors path="password"/></p></h3>
         </div>
         <div class="form-group">
             <form:input path="rePassword" type="password" name="password2" placeholder="Powtórz hasło" />
-            <p><form:errors path="rePassword"/></p>
+            <h3><p><form:errors path="rePassword"/></p></h3>
         </div>
 
         <div class="form-group form-group--buttons">
