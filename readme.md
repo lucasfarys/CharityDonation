@@ -1,4 +1,4 @@
-# Arbitraz
+# Przekazanie darów
 
 Projekt portalu, dzięki któremu można przekazać dary potrzebującym.
 
