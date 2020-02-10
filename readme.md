@@ -15,6 +15,7 @@ Użyte technologie:
 - HTML
 - Javascript
 
+
 # Główna strona
 
 ![Glowna_Strona](img/Main_Page.gif)
@@ -30,4 +31,3 @@ Użyte technologie:
 # Formularz przekazania darów
 
 ![Przekazanie darów](img/Donation.gif)
-
