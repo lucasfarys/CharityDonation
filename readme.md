@@ -1,12 +1,17 @@
-<img alt="Logo" src="http://coderslab.pl/svg/logo-coderslab.svg" width="400">
+# Arbitraz
 
+Projekt portalu, dzięki któremu można przekazać dary potrzebującym.
 
-Przed przystąpieniem do pracy  przeczytaj poniższe wskazówki.
-## Jak zacząć?
+Elementy:
+- formularz logowania , rejestracji, przekazania darów
+- zapisywanie do bazy danych informacji o darach, użytkownikach
+- zarządzani użytkownikami i instytucjami
 
-1. Zaimportuj projekt jako projekt `Maven`, wg poniższych wskazówek:
+Użyte technologie:
+- java
+- spring boot
+- spring security
+- hibernate
+- HTML
+- Javascript
 
-	* W `IntelliJ` wybieramy: `File –> New –> Project from Existing Sources...`
-	* Wskazujemy lokalizację katalogu ze sklonowanym projektem i zatwierdzamy.
-	* Następnie w nowym oknie wybieramy: `Import project from external model` i wskazujemy `Maven`
-	* Wybieramy kolejno opcje: `Next –> Next –> Next –> Finish`
